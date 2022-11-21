@@ -1,19 +1,22 @@
 import pygame
 import sys
+from player import Player
 
 
 class Game:
     def __init__(self):
-        pass
+        player_sprite = Player((300, 300))
+        self.player = pygame.sprite.GroupSingle(player_sprite)
 
     def run(self):
-        pass
+        self.player.draw(screen)
         # update all sprite groups
         # draw all sprite groups
 
 
 if __name__ == '__main__':
     pygame.init()
+    pygame.display.set_caption('Space Invaders with Clear Code')
     screen_width = 600
     screen_height = 600
     screen = pygame.display.set_mode((screen_width, screen_height))
