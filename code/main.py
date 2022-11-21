@@ -7,6 +7,16 @@ from random import choice, randint
 from laser import Laser
 
 
+class CRT:
+    def __init__(self):
+        self.tv = pygame.image.load('../graphics/tv.png').convert_alpha()
+        self.tv = pygame.transform.scale(self.tv, (screen_width, screen_height))
+
+    def draw(self):
+        self.tv.set_alpha(randint(75, 90))
+        screen.blit(self.tv, (0, 0))
+
+
 class Game:
     def __init__(self):
         # Player set up
@@ -167,6 +177,7 @@ if __name__ == '__main__':
     screen = pygame.display.set_mode((screen_width, screen_height))
     clock = pygame.time.Clock()
     game = Game()
+    crt = CRT()
 
     ALIEN_LASER = pygame.USEREVENT + 1
     pygame.time.set_timer(ALIEN_LASER, 1000)
@@ -180,6 +191,7 @@ if __name__ == '__main__':
                 game.alien_shoot()
         screen.fill((30, 30, 30))
         game.run()
+        crt.draw()
 
         pygame.display.flip()
         clock.tick(60)
